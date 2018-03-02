@@ -1,5 +1,7 @@
 ENV['RACK_ENV'] = 'test'
-require 'rspec' 
+require 'sinatra'
+require 'sinatra/activerecord'
+require 'rspec'
 require 'pry'
 require 'pg'
 require 'Store'
@@ -16,8 +18,8 @@ RSpec.configure do |config|
       brand.destroy()
     end
   end
-    Inventory.all().each() do |inventory|
-      inventory.destroy()
+    Shoes.all().each() do |shoe|
+      shoe.destroy()
     end
   end
 end

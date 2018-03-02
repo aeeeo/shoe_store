@@ -45,6 +45,12 @@ get('/brands') do
   erb:brands
 end
 
+post('/brands') do
+  # if brands already exists
+  redirect to('/')
+  erb:brands
+end
+
 get('/brands/:id/stores') do
   erb:brand
 end
@@ -70,5 +76,9 @@ delete('/stores/:id/delete_brand/:brand_id') do
 end
 
 delete('/stores/:id/delete_shoes/:shoe_id') do
+  erb:store_edit
+end
+
+delete('/brands/:id/delete_shoes/:shoe_id') do
   erb:store_edit
 end
