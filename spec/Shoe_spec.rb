@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe('Shoe') do
   it("Saves a shoe") do
-    shoe = Shoe.create({:name => "Roshe"})
+    shoe = Shoe.create({:name => "roshe"})
     expect(shoe.name).to(eq("Roshe"))
   end
   describe(Shoe) do

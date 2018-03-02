@@ -12,6 +12,10 @@ Clone to your Desktop.
 In terminal, navigate to the root directory of the project and run:
 
 ```
+$ bundle exec rake:db migrate
+```
+
+```
 $ ruby app.rb
 ```
 

@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe('Brand') do
   it("Saves a brand") do
-    brand = Brand.create({:name => "Nike"})
+    brand = Brand.create({:name => "nike"})
     expect(brand.name).to(eq("Nike"))
   end
   describe(Brand) do
