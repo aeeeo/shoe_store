@@ -1,9 +1,10 @@
 require 'spec_helper'
 
 describe('Shoe') do
-  it("Saves a shoe") do
-    shoe = Shoe.create({:name => "roshe"})
-    expect(shoe.name).to(eq("Roshe"))
+  it("Saves a shoe price correctly") do
+    shoe = Shoe.create({:name => "roshe", :price => "75"})
+    binding.pry
+    expect(shoe.price).to(eq("$75.00"))
   end
   describe(Shoe) do
     it { should belong_to(:brand) }
