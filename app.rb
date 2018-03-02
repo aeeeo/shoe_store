@@ -40,27 +40,6 @@ get('/shoes') do
   erb:shoes
 end
 
-# post('/stores') do
-#   @stores = Store.all
-#   store_name = params.fetch("store_name")
-#   Store.create({:name => store_name})
-#   erb:stores
-# end
-#
-# post('/brands') do
-#   @stores = Store.all
-#   store_name = params.fetch("store_name")
-#   Store.create({:name => store_name})
-#   erb:stores
-# end
-#
-# post('/stores') do
-#   @stores = Store.all
-#   store_name = params.fetch("store_name")
-#   Store.create({:name => store_name})
-#   erb:stores
-# end
-
 patch('/stores/:id/edit') do
   store_name = params.fetch("store_name")
   location = params.fetch("location")
@@ -68,21 +47,25 @@ patch('/stores/:id/edit') do
   @brands = @store.brands
   @shoes = @store.shoes
   @store.update({:name => store_name, :location => location})
+  @all_shoes = Shoe.all
   erb:store_editor
 end
+
+get('/stores/:id/edit') do
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+
+  @all_shoes = Shoe.all
+  @shoes = @store.shoes
+  erb:store_editor
+end
+
 
 get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
   @shoes = @store.shoes
   erb:store
-end
-
-get('/stores/:id/edit') do
-  @store = Store.find(params[:id].to_i)
-  @brands = @store.brands
-  @shoes = @store.shoes
-  erb:store_editor
 end
 
 post('/stores/:id/add_brand') do
@@ -99,8 +82,10 @@ post('/stores/:id/add_brand') do
   erb:store_editor
 end
 
-get('/brands') do
-  erb:brands
+get('/brands/:id/edit') do
+  @brand = Brand.find(params[:id].to_i)
+
+  erb:brand_editor
 end
 
 post('/brands') do
@@ -133,6 +118,7 @@ delete('/stores/:id/delete') do
 end
 
 delete('/stores/:id/delete_brand/:brand_id') do
+
   erb:store_edit
 end
 
