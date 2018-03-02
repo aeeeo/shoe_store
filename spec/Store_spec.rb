@@ -18,7 +18,6 @@ describe('Store') do
     shoe = Shoe.create({:name => "Roshe", :price => "75"})
     brand.shoes.push(shoe)
     shoe.stores.push(store)
-    binding.pry
     expect(store.shoes).to(eq([shoe]))
   end
 end

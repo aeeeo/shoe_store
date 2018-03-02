@@ -4,9 +4,9 @@ require('sinatra/activerecord')
 also_reload('lib/**/*.rb')
 require('pry')
 require('pg')
-require('Store')
-require('Brand')
-require('Inventory')
+require('./lib/store')
+require('./lib/brand')
+require('./lib/shoe')
 
 
 get('/') do
@@ -17,18 +17,24 @@ get('/') do
 end
 
 post('/') do
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
   erb:index
 end
 
 get('/stores') do
+  @stores = Store.all
   erb:stores
 end
 
 post('/stores') do
+  @stores = Store.all
   erb:stores
 end
 
 get('stores/:id') do
+
   erb:store
 end
 

@@ -2,6 +2,7 @@ class RedoTables < ActiveRecord::Migration[5.1]
   def change
     create_table(:brands) do |t|
       t.column(:name, :string)
+      t.column(:img_url, :string)
       t.timestamps
     end
     create_table(:shoes) do |t|
@@ -12,6 +13,7 @@ class RedoTables < ActiveRecord::Migration[5.1]
     end
     create_table(:stores) do |t|
       t.column(:name, :string)
+      t.column(:location, :string)
       t.timestamps
     end
     create_table(:brands_stores) do |t|
