@@ -1,4 +1,4 @@
-class MakeTables < ActiveRecord::Migration[5.1]
+class RedoTables < ActiveRecord::Migration[5.1]
   def change
     create_table(:brands) do |t|
       t.column(:name, :string)
@@ -21,6 +21,11 @@ class MakeTables < ActiveRecord::Migration[5.1]
       t.column(:brand_id, :integer)
       t.column(:shoe_id, :integer)
       t.timestamps
+    end
+      create_table(:shoes_stores) do |t|
+        t.column(:shoe_id, :integer)
+        t.column(:store_id, :integer)
+        t.timestamps
     end
   end
 end

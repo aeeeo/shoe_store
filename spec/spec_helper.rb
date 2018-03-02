@@ -4,22 +4,23 @@ require 'sinatra/activerecord'
 require 'rspec'
 require 'pry'
 require 'pg'
-require 'Store'
-require 'Brand'
-require 'Inventory'
+require 'store'
+require 'brand'
+require 'shoe'
 
 RSpec.configure do |config|
   config.after(:each) do
     Store.all().each() do |store|
       store.destroy()
     end
-  end
+
     Brand.all().each() do |brand|
       brand.destroy()
     end
-  end
-    Shoes.all().each() do |shoe|
+
+    Shoe.all().each() do |shoe|
       shoe.destroy()
     end
+
   end
 end

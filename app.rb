@@ -10,6 +10,9 @@ require('Inventory')
 
 
 get('/') do
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
   erb:index
 end
 
@@ -26,7 +29,7 @@ post('/stores') do
 end
 
 get('stores/:id') do
-  erb:store_view
+  erb:store
 end
 
 get('stores/:id/edit') do

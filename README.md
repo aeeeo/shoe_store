@@ -2,7 +2,7 @@
 
 Remember: the documentation, not the code, defines what a module does. -- Ken Williams-->
 
-# Shoe Store
+# Laced With Love
 
 ###[Andrew Peterson](http://github.com/ndrwptrsn) wrote this Active Record app.
 
@@ -23,4 +23,3 @@ Open your browser and go to localhost:4567
 *Licensed under MIT license*
 
 Copyright (c) 2018 **_Andrew Peterson_**
-
