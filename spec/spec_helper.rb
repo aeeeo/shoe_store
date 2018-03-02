@@ -7,6 +7,7 @@ require 'pg'
 require 'store'
 require 'brand'
 require 'shoe'
+require 'shoulda-matchers'
 
 RSpec.configure do |config|
   config.after(:each) do
