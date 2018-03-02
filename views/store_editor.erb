@@ -1,0 +1,20 @@
+<h1>Store ERB</h1>
+<h1><%= @store.name%></h1>
+
+<a href="/stores/<%=@store.id%>/edit">Edit</a>
+
+<% @store.shoes.each do |shoe| %>
+  <h2><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></h2>
+  <h2><%= shoe.price %></h2>
+  <h2><%= shoe.brand %></h2>
+<% end %>
+
+<% @brands.each do |brand| %>
+  <h2><a href="/brand/<%=brand.id%>"><%= brand.name %></a></h2>
+
+<% end %>
+
+<form action="/stores/<%=@store.id%>/add_brand" method="post">
+  <input style="min-width: 70%" type="text" name="brand_name" class="form-control" placeholder="Brand Name" autocomplete="off">
+  <button type="submit" title="Add Brand" class="btn btn-info btn-simple btn-xs">Add</button>
+</form>

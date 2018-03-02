@@ -10,7 +10,7 @@ class Shoe < ActiveRecord::Base
   private
 
   def format_name
-    self.name=(name.chomp.downcase.capitalize)
+    self.name=(name.chomp.downcase.titleize)
   end
   def format_price
     self.price="$" + sprintf('%.2f', price.to_f).to_s

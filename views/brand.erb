@@ -1,0 +1,8 @@
+<h1>Brand ERB</h1>
+<h1><%= @brand.name%></h1>
+
+<a href="/brands/<%=@brand.id%>/edit">Edit</a>
+
+<% @brand.stores.each do |store| %>
+  <h2><a href="/stores/<%=store.id%>"><%= store.name %></a></h2>
+<% end %>
