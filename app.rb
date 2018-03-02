@@ -17,6 +17,8 @@ get('/') do
 end
 
 post('/') do
+  store_name = params.fetch("store_name")
+  Store.create({:name => store_name})
   @brands = Brand.all
   @stores = Store.all
   @shoes = Shoe.all
@@ -33,8 +35,8 @@ post('/stores') do
   erb:stores
 end
 
-get('stores/:id') do
-
+get('/stores/:id') do
+  @store = Store.find(params[:id].to_i)
   erb:store
 end
 

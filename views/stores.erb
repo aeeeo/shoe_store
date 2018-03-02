@@ -7,9 +7,3 @@
   <input style="min-width: 70%" type="text" name="store_name" class="form-control" placeholder="Store" autocomplete="off">
   <button type="submit" title="Add Store" class="btn btn-info btn-simple btn-xs">Add</button>
 </form>
-
-
-<h1>Shoes</h1>
-<% @shoes.each do |shoe| %>
-<p><%= shoe.name %> <%= shoe.brand %> <%= shoe.price %> <%= shoe.store%></p>
-<%end%>
