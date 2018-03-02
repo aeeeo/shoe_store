@@ -2,7 +2,27 @@
 <h1><%= @brand.name%></h1>
 
 <a href="/brands/<%=@brand.id%>/edit">Edit</a>
-
-<% @brand.stores.each do |store| %>
-  <h2><a href="/stores/<%=store.id%>"><%= store.name %></a></h2>
+<h2>Available at:</h2>
+<% @stores.each do |store| %>
+  <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
 <% end %>
+
+<h2>Shoes:</h2>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @shoes.each do |shoe| %>
+    <tr>
+      <td><%= shoe.name %></td>
+    </tr>
+    <tr>
+      <td><%= shoe.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

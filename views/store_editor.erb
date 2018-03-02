@@ -1,7 +1,20 @@
-<h1>Store ERB</h1>
-<h1><%= @store.name%></h1>
+<h1>Store_editor ERB</h1>
+<h1><%= @store.name%> <%= @store.location%></h1>
 
-<a href="/stores/<%=@store.id%>/edit">Edit</a>
+
+<h3>Name:</h3>
+<form action="/stores/<%= @store.id%>/edit" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input name="store_name" class="form-control" type="text" placeholder="Change Name" value="<%= @store.name %>">
+<h3>Location:</h3>
+    <input name="location" value="<%= @store.location %>" class="form-control" type="text" placeholder="Add Zip Code">
+  <br><button type="submit" class="btn-lg">Save</button>
+</form>
+
+
+
+
+<h2>Brands:</h2>
 
 <% @store.shoes.each do |shoe| %>
   <h2><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></h2>
@@ -10,7 +23,7 @@
 <% end %>
 
 <% @brands.each do |brand| %>
-  <h2><a href="/brand/<%=brand.id%>"><%= brand.name %></a></h2>
+  <h2><a href="/brands/<%=brand.id%>"><%= brand.name %></a></h2>
 
 <% end %>
 

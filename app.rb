@@ -62,11 +62,19 @@ end
 # end
 
 patch('/stores/:id/edit') do
+  store_name = params.fetch("store_name")
+  location = params.fetch("location")
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes
+  @store.update({:name => store_name, :location => location})
   erb:store_editor
 end
 
 get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes
   erb:store
 end
 
@@ -101,7 +109,10 @@ post('/brands') do
   erb:brands
 end
 
-get('/brands/:id/stores') do
+get('/brands/:id') do
+  @brand = Brand.find(params[:id].to_i)
+  @stores = @brand.stores
+  @shoes = @brand.shoes
   erb:brand
 end
 

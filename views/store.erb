@@ -3,8 +3,30 @@
 
 <a href="/stores/<%=@store.id%>/edit">Edit</a>
 
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @store.shoes.each do |shoe| %>
-  <h2><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></h2>
-  <h2><%= shoe.price %></h2>
-  <h2><%= shoe.brand %></h2>
+    <tr>
+      <td><%= shoe.price %></td>
+    </tr>
+    <tr>
+      <td><%= shoe.brand %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+
+<h2>Brands:</h2>
+<% @brands.each do |brand| %>
+  <h2><a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>"><%= brand.name %></a></h2>
 <% end %>
