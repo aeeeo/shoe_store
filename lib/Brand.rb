@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 class Brand < ActiveRecord::Base
-  validates(:name, {:presence => true, :length => {:maximum => 100}})
+  validates(:name, {:presence => true, :length => {:maximum => 50}})
   before_save(:format_name)
 
   has_and_belongs_to_many :stores
