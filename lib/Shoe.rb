@@ -17,7 +17,7 @@ class Shoe < ActiveRecord::Base
     if self.price == nil
       self.price="$50.00"
     else
-      self.price="$" + sprintf('%.2f', price.to_f).to_s
+      self.price="$" + sprintf('%.2f', price.tr('$', '').to_f).to_s
     end
   end
 end

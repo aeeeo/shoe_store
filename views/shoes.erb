@@ -1,4 +1,26 @@
-<h1>Shoes ERB</h1>
+<h2>Shoe Locator</h2>
+<p>Sort by <a href="/brands">Brand</a> | <a href="/stores">Location</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Price</th>
+      <th scope="col">Edit/Delete</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @shoes.each do |shoe| %>
-<p><a href="shoes/<%=shoe.id%>"><%= shoe.name %></a> | <a href="shoes/<%=shoe.id%>/edit">edit</a></p>
-<%end%>
+    <tr>
+      <td><%= shoe.name %></td>
+
+      <td><%= shoe.brand.name %></td>
+
+      <td><%= shoe.price %></td>
+
+      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

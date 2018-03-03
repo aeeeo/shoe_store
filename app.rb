@@ -44,10 +44,7 @@ post('/brands') do
   erb:brands
 end
 
-get('/shoes') do
-  @shoes = Shoe.all
-  erb:shoes
-end
+
 
 patch('/stores/:id/edit') do
   @all_shoes = Shoe.all
@@ -123,6 +120,30 @@ get('/brands/:id') do
   @stores = @brand.stores
   @shoes = @brand.shoes
   erb:brand
+end
+
+get('/shoes') do
+  @shoes = Shoe.all
+  erb:shoes
+end
+
+get('/shoes/:id') do
+  @shoe = Shoe.find(params[:id].to_i)
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
+  erb:shoe
+end
+
+patch('/shoes/:id') do
+  @shoe = Shoe.find(params[:id].to_i)
+  shoe_name = params.fetch("shoe_name")
+  price = params.fetch("price")
+  @shoe.update({:name => shoe_name, :price => price})
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
+  erb:shoe
 end
 
 get('/shoes/:id/stores') do

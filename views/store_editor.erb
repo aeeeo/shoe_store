@@ -12,13 +12,7 @@
 </form>
 
 
-
-
-
-
-
 <h2>Available Shoes:</h2>
-
 <table class="table">
   <thead>
     <tr>
@@ -48,13 +42,13 @@
 <% end %>
 
 
-
 <h2>Add Shoes:</h2>
 <form action="/stores/<%=@store.id%>/add_shoe" method="post">
   <select name="shoe_name">
     <% @all_shoes.each do |shoe|%>
     <option value="<%= shoe.name%>"><%= shoe.name%></option>
     <%end%>
-  </select><br>
+  </select>
+
   <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
 </form>
