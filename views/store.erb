@@ -15,11 +15,11 @@
   <tbody>
 <% @store.shoes.each do |shoe| %>
     <tr>
-      <td><%= shoe.price %></td>
+      <td><%= shoe.name %></td>
 
       <td><%= shoe.brand.name %></td>
 
-      <td><%= shoe.brand %></td>
+      <td><%= shoe.price %></td>
     </tr>
     <% end %>
   </tbody>

@@ -11,8 +11,15 @@ require('./lib/shoe')
 
 get('/') do
   @brands = Brand.all
+  @stores = Store.all.order(:name)
+  @shoes = Shoe.all.order(:brand_id)
+  erb:index
+end
+
+get('/order_price') do
+  @brands = Brand.all
   @stores = Store.all
-  @shoes = Shoe.all
+  @shoes = Shoe.all.order(:price)
   erb:index
 end
 
@@ -44,8 +51,6 @@ post('/brands') do
   erb:brands
 end
 
-
-
 patch('/stores/:id/edit') do
   @all_shoes = Shoe.all
   store_name = params.fetch("store_name")
@@ -68,7 +73,7 @@ end
 get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @shoes = @store.shoes
+  @shoes = @store.shoes.order(:brand)
   erb:store
 end
 
@@ -104,10 +109,8 @@ post('/brands/:id/add_shoe') do
   shoe = Shoe.where(name: shoe_name).take
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
-
   if shoe == nil
     @shoes.push(Shoe.create({:name => shoe_name, :price => price}))
-
   end
   @brand = Brand.find(params[:id].to_i)
   @stores = @brand.stores
@@ -123,7 +126,13 @@ get('/brands/:id') do
 end
 
 get('/shoes') do
-  @shoes = Shoe.all
+  @shoes = Shoe.all.order(:brand_id)
+  erb:shoes
+end
+
+get('/shoes/order_price') do
+
+  @shoes = Shoe.all.order(:price)
   erb:shoes
 end
 
@@ -146,9 +155,6 @@ patch('/shoes/:id') do
   erb:shoe
 end
 
-get('/shoes/:id/stores') do
-  erb:shoe
-end
 
 delete('/stores/:id/delete') do
   erb:index
@@ -160,9 +166,11 @@ delete('/stores/:id/delete_brand/:brand_id') do
 end
 
 delete('/stores/:id/delete_shoes/:shoe_id') do
+
   erb:store_edit
 end
 
 delete('/brands/:id/delete_shoes/:shoe_id') do
+
   erb:store_edit
 end
