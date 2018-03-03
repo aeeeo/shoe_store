@@ -38,11 +38,16 @@
 
 
 
+<%@brands.each do |brand|%>
+<a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>" width="150"></a>
+<%end%>
 
-<h2>Available Brands:</h2>
+
+
+<!-- <h2>Available Brands:</h2>
 <% @brands.each do |brand| %>
   <p><%= brand.name %> <a href="/brands/<%=brand.id%>">view</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
-<% end %>
+<% end %> -->
 
 
 <h2>Add Shoes:</h2>

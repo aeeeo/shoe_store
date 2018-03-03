@@ -1,5 +1,6 @@
 <h1>Brand Editor ERB</h1>
 <h1><%= @brand.name%></h1>
+<img src="<%= @brand.img_url%>" width="150">
 <h3>Name:</h3>
 <form action="/brands/<%= @brand.id%>/edit" method="post">
   <input name="_method" type="hidden" value="patch">
