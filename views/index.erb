@@ -1,10 +1,10 @@
 <h1>Index ERB</h1>
 <h2>Store Locator</h2>
 <% @stores.each do |store| %>
-<p><a href="stores/<%=store.id%>"><%= store.name %></a> | <a href="stores/<%=store.id%>/edit">edit</a></p>
+<p><%= store.name %> <a href="stores/<%=store.id%>">view</a> | <a href="stores/<%=store.id%>/edit">edit</a></p>
 <%end%>
 
-<p>Add Store:</p>
+<h2>Add Store:</h2>
 <form action="/" method="post">
   <input style="min-width: 70%" type="text" name="store_name" class="form-control" placeholder="Store" autocomplete="off">
   <button type="submit" title="Add Store" class="btn btn-lg">Add</button>

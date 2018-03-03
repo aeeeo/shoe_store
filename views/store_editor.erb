@@ -17,7 +17,7 @@
 
 <h2>Add Shoes:</h2>
 <form action="/stores/<%=@store.id%>/add_shoe" method="post">
-  <select>
+  <select name="shoe_name">
     <% @all_shoes.each do |shoe|%>
     <option value="<%= shoe.name%>"><%= shoe.name%></option>
     <%end%>
@@ -37,5 +37,5 @@
 
 <h2>Available Brands:</h2>
 <% @brands.each do |brand| %>
-  <p><a href="/brands/<%=brand.id%>"><%= brand.name %></a> | <a href="/stores/<%= @store.id%>/delete_brand/<%=brand.id%>">delete</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
+  <p><%= brand.name %> <a href="/brands/<%=brand.id%>">view</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
 <% end %>

@@ -6,6 +6,7 @@
   <thead>
     <tr>
       <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
@@ -13,8 +14,9 @@
 <% @shoes.each do |shoe| %>
     <tr>
       <td><%= shoe.name %></td>
-    </tr>
-    <tr>
+
+      <td><%= shoe.brand.name %></td>
+
       <td><%= shoe.price %></td>
     </tr>
     <% end %>

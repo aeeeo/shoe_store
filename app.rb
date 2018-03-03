@@ -82,6 +82,19 @@ post('/stores/:id/add_brand') do
   erb:store_editor
 end
 
+post('/stores/:id/add_shoe') do
+  @store = Store.find(params[:id].to_i)
+  shoe_name = params.fetch("shoe_name")
+  shoe = Shoe.where(name: shoe_name).take
+  brand = Brand.where(name: shoe.brand.name)
+  @store.shoes.push(shoe)
+  @store.brands.push(brand)
+  @brands = @store.brands
+  @shoes = @store.shoes
+  @all_shoes = Shoe.all
+  erb:store_editor
+end
+
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
@@ -89,7 +102,6 @@ get('/brands/:id/edit') do
 end
 
 post('/brands/:id/edit') do
-  # if brands already exists
   shoe_name = params.fetch("shoe_name")
   price = params.fetch("price")
   @brand = Brand.find(params[:id].to_i)
@@ -118,9 +130,7 @@ get('/shoes') do
   erb:shoes
 end
 
-post('/stores/:id/add_brand') do
-  erb:store_edit
-end
+
 
 delete('/stores/:id/delete') do
   erb:index

@@ -3,11 +3,12 @@
 
 <a href="/stores/<%=@store.id%>/edit">Edit</a>
 
-
+<h2>Available Shoes</h2>
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
       <th scope="col">Price</th>
     </tr>
   </thead>
@@ -15,8 +16,9 @@
 <% @store.shoes.each do |shoe| %>
     <tr>
       <td><%= shoe.price %></td>
-    </tr>
-    <tr>
+
+      <td><%= shoe.brand.name %></td>
+
       <td><%= shoe.brand %></td>
     </tr>
     <% end %>
@@ -28,5 +30,5 @@
 
 <h2>Brands:</h2>
 <% @brands.each do |brand| %>
-  <h2><a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>"><%= brand.name %></a></h2>
+  <p><a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>"><%= brand.name %></a></p>
 <% end %>
