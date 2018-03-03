@@ -18,14 +18,14 @@ end
 
 get('/order_price') do
   @brands = Brand.all
-  @stores = Store.all
+  @stores = Store.all.order(:name)
   @shoes = Shoe.all.order(:price)
   erb:index
 end
 
 get('/order_name') do
   @brands = Brand.all
-  @stores = Store.all
+  @stores = Store.all.order(:name)
   @shoes = Shoe.all.order(:name)
   erb:index
 end

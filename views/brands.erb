@@ -6,7 +6,7 @@
 
 <%end%>
 <% @brands.each do |brand| %>
-<a href="brands/<%=brand.id%>/edit"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"><p>
+<a href="brands/<%=brand.id%>/edit"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"></a>
 <%end%>
 <h2>Add Brand:</h2>
 <form action="/brands" method="post">
