@@ -23,6 +23,13 @@ get('/order_price') do
   erb:index
 end
 
+get('/order_name') do
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all.order(:name)
+  erb:index
+end
+
 post('/') do
   store_name = params.fetch("store_name")
   Store.create({:name => store_name})
@@ -74,7 +81,21 @@ end
 get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @shoes = @store.shoes.order(:brand)
+  @shoes = @store.shoes.order(:brand_id)
+  erb:store
+end
+
+get('/stores/:id/order_price') do
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes.order(:price)
+  erb:store
+end
+
+get('/stores/:id/order_name') do
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes.order(:name)
   erb:store
 end
 

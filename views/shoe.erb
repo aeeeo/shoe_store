@@ -10,6 +10,7 @@
     <input name="price" value="<%= @shoe.price %>" class="form-control" type="text" placeholder="Add / CHange Price" pattern="\[0-9$]{1,5}">
   <br><button type="submit" class="btn-lg">Save</button>
 </form>
+<!-- <input type="button" class="btn-lg" value="Back" onclick="history.back(-4)" /> -->
 
 <h2>Available at these stores:</h2>
 <% @shoe.stores.each do |store| %>

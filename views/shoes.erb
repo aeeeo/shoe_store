@@ -23,6 +23,7 @@
   </tbody>
 </table>
 
-<% @brands.each do |brand|%>
-<a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>"></a>
+
+<%@brands.each do |brand|%>
+<a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>" width="150"></a>
 <%end%>
