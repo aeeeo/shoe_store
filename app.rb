@@ -50,21 +50,21 @@ get('/shoes') do
 end
 
 patch('/stores/:id/edit') do
+  @all_shoes = Shoe.all
   store_name = params.fetch("store_name")
   location = params.fetch("location")
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
   @shoes = @store.shoes
   @store.update({:name => store_name, :location => location})
-  @all_shoes = Shoe.all
   erb:store_editor
 end
 
 get('/stores/:id/edit') do
+  @all_shoes = Shoe.all
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
   @shoes = @store.shoes
-  @all_shoes = Shoe.all
   erb:store_editor
 end
 
@@ -84,10 +84,12 @@ post('/stores/:id/add_shoe') do
   brand = Brand.where(name: shoe.brand.name)
   @shoes = @store.shoes
   @brands = @store.brands
+  if @brands.any? { |i| (brand).include?(i) } == false
+    @store.brands.push(brand)
+  end
 
   if @shoes.where(name: shoe_name) == []
     @store.shoes.push(shoe)
-    @store.brands.push(brand)
   end
   @brands = @store.brands
   @shoes = @store.shoes
