@@ -25,12 +25,12 @@
 
 <p>Add Shoe:</p>
 <form action="/brands/<%=@brand.id%>/edit" method="post">
-  <input style="min-width: 70%" type="text" name="shoe_name" class="form-control" placeholder="Shoe Name" autocomplete="off"><br>
-  <input style="min-width: 70%" type="text" name="price" class="form-control" placeholder="Shoe Price" autocomplete="off"><br>
-  <button type="submit" title="Add Store" class="btn-lg">Add</button>
+  <input type="text" name="shoe_name" class="form-control" placeholder="Shoe Name" autocomplete="off"><br>
+  <input type="text" name="price" class="form-control" placeholder="Shoe Price" autocomplete="off"><br>
+  <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
 </form>
 
 <h2>Available at These Stores:</h2>
-<% @brand.stores.each do |store| %>
+<% @stores.each do |store| %>
   <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
 <% end %>

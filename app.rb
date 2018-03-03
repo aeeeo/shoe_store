@@ -35,6 +35,15 @@ get('/brands') do
   erb:brands
 end
 
+post('/brands') do
+  brand_name = params.fetch("brand_name")
+  Brand.create({:name => brand_name})
+  @stores = Store.all
+  @brands = Brand.all
+  @shoes = Shoe.all
+  erb:brands
+end
+
 get('/shoes') do
   @shoes = Shoe.all
   erb:shoes
@@ -54,7 +63,6 @@ end
 get('/stores/:id/edit') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-
   @all_shoes = Shoe.all
   @shoes = @store.shoes
   erb:store_editor
@@ -68,36 +76,31 @@ get('/stores/:id') do
   erb:store
 end
 
-post('/stores/:id/add_brand') do
-  @store = Store.find(params[:id].to_i)
-  brand_name = params.fetch("brand_name")
-  if Brand.where(name: brand_name).take != nil
-    brand = Brand.where(name: brand_name).take
-    @store.brands.push(brand)
-  else
-    @store.brands.push(Brand.create({:name => brand_name}))
-  end
-  @brands = @store.brands
-  @shoes = @store.shoes
-  erb:store_editor
-end
 
 post('/stores/:id/add_shoe') do
   @store = Store.find(params[:id].to_i)
   shoe_name = params.fetch("shoe_name")
   shoe = Shoe.where(name: shoe_name).take
   brand = Brand.where(name: shoe.brand.name)
-  @store.shoes.push(shoe)
-  @store.brands.push(brand)
+  @shoes = @store.shoes
+  @brands = @store.brands
+  # if @shoes.where(name: shoe_name) == nil
+    @store.shoes.push(shoe)
+  #   if @brands.where(name: brand_name) == nil
+  #   @store.brands.push(brand)
+  #   end
+  # end
   @brands = @store.brands
   @shoes = @store.shoes
   @all_shoes = Shoe.all
+
   erb:store_editor
 end
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
+  @stores = @brand.stores
   erb:brand_editor
 end
 
@@ -106,11 +109,13 @@ post('/brands/:id/edit') do
   price = params.fetch("price")
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
+  @stores = @brand.stores
   if Shoe.where(name: shoe_name).first != nil
     shoe = Shoe.where(name: shoe_name).first
     @brand.shoes.push(shoe)
   else
-    @brand.shoes.push(Shoe.create({:name => shoe_name, :price => price}))
+    shoe = Shoe.create({:name => shoe_name, :price => price})
+    @brand.shoes.push(shoe)
   end
   erb:brand_editor
 end
@@ -125,11 +130,6 @@ end
 get('/shoes/:id/stores') do
   erb:shoe
 end
-
-get('/shoes') do
-  erb:shoes
-end
-
 
 
 delete('/stores/:id/delete') do

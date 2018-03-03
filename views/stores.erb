@@ -1,4 +1,4 @@
 <h1>Stores ERB</h1>
 <% @stores.each do |store| %>
-<p><a href="stores/<%=store.id%>"><%= store.name %></a> | <a href="stores/<%=store.id%>/edit">edit</a></p>
+<p><%= store.name %> <a href="stores/<%=store.id%>">view</a> | <a href="stores/<%=store.id%>/edit">edit</a></p>
 <%end%>

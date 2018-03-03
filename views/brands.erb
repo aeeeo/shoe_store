@@ -1,4 +1,12 @@
 <h1>Brands ERB</h1>
+
+<h2>Add Brand:</h2>
+<form action="/brands" method="post">
+  <input style="min-width: 70%" type="text" name="brand_name" class="form-control" placeholder="Brand" autocomplete="off">
+  <button type="submit" title="Add Store" class="btn btn-lg">Add</button>
+</form>
+
+<h2>Brands:</h2>
 <% @brands.each do |brand| %>
-<p><a href="brands/<%=brand.id%>"><%= brand.name %></a> | <a href="brands/<%=brand.id%>/edit">edit</a></p>
+<p><%= brand.name %> <a href="brands/<%=brand.id%>">view</a> | <a href="brands/<%=brand.id%>/edit">edit</a></p>
 <%end%>

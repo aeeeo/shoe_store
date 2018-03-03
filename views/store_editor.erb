@@ -15,6 +15,40 @@
 
 
 
+
+
+<h2>Available Shoes:</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
+<% @shoes.each do |shoe| %>
+    <tr>
+      <td><%= shoe.name %></td>
+
+      <td><%= shoe.brand.name %></td>
+
+      <td><%= shoe.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+
+
+<h2>Available Brands:</h2>
+<% @brands.each do |brand| %>
+  <p><%= brand.name %> <a href="/brands/<%=brand.id%>">view</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
+<% end %>
+
+
+
 <h2>Add Shoes:</h2>
 <form action="/stores/<%=@store.id%>/add_shoe" method="post">
   <select name="shoe_name">
@@ -24,18 +58,3 @@
   </select><br>
   <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
 </form>
-
-
-<h2>Available Shoes:</h2>
-
-<% @shoes.each do |shoe| %>
-  <p><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></p>
-  <p><%= shoe.price %></p>
-  <p><%= shoe.brand %></p>
-<% end %>
-
-
-<h2>Available Brands:</h2>
-<% @brands.each do |brand| %>
-  <p><%= brand.name %> <a href="/brands/<%=brand.id%>">view</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
-<% end %>
