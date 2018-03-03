@@ -2,9 +2,9 @@
 
 Remember: the documentation, not the code, defines what a module does. -- Ken Williams-->
 
-# Laced With Love
+# Laced With Less Shoe Liquidators
 
-###[Andrew Peterson](http://github.com/ndrwptrsn) wrote this Active Record app.
+#### [Andrew Peterson](http://github.com/ndrwptrsn) wrote this Active Record app.
 
 ## Setup
 
