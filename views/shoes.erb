@@ -1,6 +1,6 @@
 <h1>Shoes ERB</h1>
 <h2>Shoe Locator</h2>
-<p>Sort by <a href="/shoes/order_price">Price</a> | <a href="/shoes">Brand</a>
+<p>Sort by <a href="/shoes/order_name">Name</a> | <a href="/shoes/order_price">Price</a> | <a href="/shoes">Brand</a>
 
 <table class="table">
   <thead>
@@ -14,8 +14,8 @@
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
-      <td><%= shoe.name %></td>
-      <td><%= shoe.brand.name %></td>
+      <td><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></td>
+      <td><a href="/brands/<%=shoe.brand_id%>"><%= shoe.brand.name %></a></td>
       <td><%= shoe.price %></td>
       <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
     </tr>

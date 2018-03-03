@@ -190,6 +190,12 @@ get('/shoes/order_price') do
   erb:shoes
 end
 
+get('/shoes/order_name') do
+  @brands = Brand.all
+  @shoes = Shoe.all.order(:name)
+  erb:shoes
+end
+
 get('/shoes/:id') do
   @shoe = Shoe.find(params[:id].to_i)
   @brands = Brand.all
