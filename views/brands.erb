@@ -1,13 +1,16 @@
 <h1>Brands ERB</h1>
 
-<h2>Add Brand:</h2>
-<form action="/brands" method="post">
-  <input style="min-width: 70%" type="text" name="brand_name" class="form-control" placeholder="Brand" autocomplete="off"><br>
-  <input style="min-width: 70%" type="text" name="img_url" class="form-control" placeholder="Image URL" autocomplete="off">
-  <button type="submit" title="Add Store" class="btn btn-lg">Add</button>
-</form>
-
 <h2>Brands:</h2>
 <% @brands.each do |brand| %>
 <p><a href="brands/<%=brand.id%>/edit"><%= brand.name %></a></p>
+
 <%end%>
+<% @brands.each do |brand| %>
+<a href="brands/<%=brand.id%>/edit"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"><p>
+<%end%>
+<h2>Add Brand:</h2>
+<form action="/brands" method="post">
+  <input style="min-width: 70%" type="text" name="brand_name" class="form-control" placeholder="Brand" autocomplete="off"><br>
+  <input style="min-width: 70%" type="text" name="img_url" class="form-control" placeholder="Image URL" autocomplete="off"><br>
+  <button type="submit" title="Add Store" class="btn-lg">Add</button>
+</form>
