@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 class Shoe < ActiveRecord::Base
+  before_validation(:format_name)
   validates(:name, {uniqueness: true, :presence => true, :length => {:maximum => 100}})
   validates(:price, {:presence => true, :length => {:maximum => 7}})
   before_save(:format_name)

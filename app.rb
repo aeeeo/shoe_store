@@ -63,8 +63,8 @@ end
 get('/stores/:id/edit') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @all_shoes = Shoe.all
   @shoes = @store.shoes
+  @all_shoes = Shoe.all
   erb:store_editor
 end
 
@@ -84,16 +84,14 @@ post('/stores/:id/add_shoe') do
   brand = Brand.where(name: shoe.brand.name)
   @shoes = @store.shoes
   @brands = @store.brands
-  # if @shoes.where(name: shoe_name) == nil
+
+  if @shoes.where(name: shoe_name) == []
     @store.shoes.push(shoe)
-  #   if @brands.where(name: brand_name) == nil
-  #   @store.brands.push(brand)
-  #   end
-  # end
+    @store.brands.push(brand)
+  end
   @brands = @store.brands
   @shoes = @store.shoes
   @all_shoes = Shoe.all
-
   erb:store_editor
 end
 

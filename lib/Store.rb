@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 class Store < ActiveRecord::Base
+  before_validation(:format_name)
   validates(:name,  {:presence => true, uniqueness: true, :length => {:maximum => 100}})
   before_save(:format_name)
 
