@@ -68,14 +68,12 @@ get('/stores/:id/edit') do
   erb:store_editor
 end
 
-
 get('/stores/:id') do
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
   @shoes = @store.shoes
   erb:store
 end
-
 
 post('/stores/:id/add_shoe') do
   @store = Store.find(params[:id].to_i)
@@ -87,7 +85,6 @@ post('/stores/:id/add_shoe') do
   if @brands.any? { |i| (brand).include?(i) } == false
     @store.brands.push(brand)
   end
-
   if @shoes.where(name: shoe_name) == []
     @store.shoes.push(shoe)
   end
@@ -104,19 +101,20 @@ get('/brands/:id/edit') do
   erb:brand_editor
 end
 
-post('/brands/:id/edit') do
+post('/brands/:id/add_shoe') do
   shoe_name = params.fetch("shoe_name")
-  price = params.fetch("price")
+  price = params["shoe_price"]
+  shoe = Shoe.where(name: shoe_name).take
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
-  @stores = @brand.stores
-  if Shoe.where(name: shoe_name).first != nil
-    shoe = Shoe.where(name: shoe_name).first
-    @brand.shoes.push(shoe)
-  else
-    shoe = Shoe.create({:name => shoe_name, :price => price})
-    @brand.shoes.push(shoe)
+
+  if shoe == nil
+    @shoes.push(Shoe.create({:name => shoe_name, :price => price}))
+
   end
+  @brand = Brand.find(params[:id].to_i)
+  @stores = @brand.stores
+  @shoes = @brand.shoes
   erb:brand_editor
 end
 
@@ -130,7 +128,6 @@ end
 get('/shoes/:id/stores') do
   erb:shoe
 end
-
 
 delete('/stores/:id/delete') do
   erb:index

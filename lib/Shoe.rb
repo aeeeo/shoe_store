@@ -2,9 +2,8 @@
 class Shoe < ActiveRecord::Base
   before_validation(:format_name)
   validates(:name, {uniqueness: true, :presence => true, :length => {:maximum => 100}})
-  validates(:price, {:presence => true, :length => {:maximum => 7}})
   before_save(:format_name)
-  before_save(:format_price)
+  after_save(:format_price)
   has_and_belongs_to_many :stores
   belongs_to :brand
 
@@ -13,6 +12,7 @@ class Shoe < ActiveRecord::Base
   def format_name
     self.name=(name.chomp.downcase.titleize)
   end
+
   def format_price
     if self.price == nil
       self.price="$50.00"
