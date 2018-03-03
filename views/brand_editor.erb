@@ -9,27 +9,32 @@
   <br><button type="submit" class="btn-lg">Save</button>
 </form>
 
-<h2>Shoes:</h2>
+<h2>Shoe Locator</h2>
+<p>Sort by <a href="/brands/<%=@brand.id%>/edit">Name</a> | <a href="/brands/<%=@brand.id%>/order_price">Price</a>
+
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
+      <th scope="col">Edit/Delete</th>
     </tr>
   </thead>
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
-      <td><%= shoe.name %></td>
-
-      <td><%= shoe.brand.name %></td>
-
+      <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
+      <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
       <td><%= shoe.price %></td>
+      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
+
+
 
 <p>Add Shoe:</p>
 <form action="/brands/<%=@brand.id%>/add_shoe" method="post">
@@ -38,7 +43,7 @@
   <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
 </form>
 
-<h2>Available at These Stores:</h2>
+<h2>Sold at These Stores:</h2>
 <% @stores.each do |store| %>
   <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
 <% end %>

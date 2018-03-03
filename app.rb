@@ -120,7 +120,7 @@ end
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
-  @shoes = @brand.shoes.order(:price)
+  @shoes = @brand.shoes.order(:name)
   @stores = @brand.stores
   erb:brand_editor
 end
@@ -130,7 +130,7 @@ patch('/brands/:id/edit') do
   img_url = params.fetch("img_url")
   @brand = Brand.find(params[:id].to_i)
   @brand.update({:name => brand_name, :img_url => img_url})
-  @shoes = @brand.shoes.order(:price)
+  @shoes = @brand.shoes.order(:name)
   @stores = @brand.stores
   erb:brand_editor
 end
@@ -152,16 +152,16 @@ end
 
 get('/brands/:id') do
   @brand = Brand.find(params[:id].to_i)
-  @stores = @brand.stores
+  @stores = @brand.stores.order(:name)
   @shoes = @brand.shoes.order(:name)
   erb:brand
 end
 
 get('/brands/:id/order_price') do
   @brand = Brand.find(params[:id].to_i)
-  @stores = @brand.stores
+  @stores = @brand.stores.order(:name)
   @shoes = @brand.shoes.order(:price)
-  erb:brand
+  erb:brand_editor
 end
 
 get('/shoes') do
