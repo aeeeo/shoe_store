@@ -74,7 +74,23 @@ get('/stores/:id/edit') do
   @all_shoes = Shoe.all
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @shoes = @store.shoes
+  @shoes = @store.shoes.order(:name)
+  erb:store_editor
+end
+
+get('/stores/:id/edit/order_price') do
+  @all_shoes = Shoe.all
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes.order(:price)
+  erb:store_editor
+end
+
+get('/stores/:id/edit/order_brand') do
+  @all_shoes = Shoe.all
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes.order(:brand_id)
   erb:store_editor
 end
 
@@ -120,7 +136,7 @@ end
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
-  @shoes = @brand.shoes.order(:name)
+  @shoes = @brand.shoes.order(:brand_id)
   @stores = @brand.stores
   erb:brand_editor
 end

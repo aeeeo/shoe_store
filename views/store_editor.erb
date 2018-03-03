@@ -12,27 +12,30 @@
 </form>
 
 
-<h2>Available Shoes:</h2>
+<h2>Shoe Locator</h2>
+<p>Sort by <a href="/stores/<%=@store.id%>/edit">Name</a> | <a href="/stores/<%=@store.id%>/edit/order_price">Price</a> | <a href="/stores/<%=@store.id%>/edit/order_brand">Brand</a>
+
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
+      <th scope="col">Edit/Delete</th>
     </tr>
   </thead>
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
-      <td><%= shoe.name %></td>
-
-      <td><%= shoe.brand.name %></td>
-
+      <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
+      <td><a href="/stores/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
       <td><%= shoe.price %></td>
+      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
     </tr>
     <% end %>
   </tbody>
 </table>
+
 
 
 
