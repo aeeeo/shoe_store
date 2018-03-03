@@ -28,7 +28,7 @@
     <tr>
       <td><%= shoe.name %></td>
 
-      <td><%= shoe.brand.name %></td>
+      <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
 
       <td><%= shoe.price %></td>
 

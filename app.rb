@@ -38,15 +38,16 @@ get('/stores') do
 end
 
 get('/brands') do
-  @brands = Brand.all
+  @brands = Brand.all.order(:name)
   erb:brands
 end
 
 post('/brands') do
   brand_name = params.fetch("brand_name")
-  Brand.create({:name => brand_name})
+  img_url = params.fetch("img_url")
+  Brand.create({:name => brand_name, :img_url => img_url})
   @stores = Store.all
-  @brands = Brand.all
+  @brands = Brand.all.order(:name)
   @shoes = Shoe.all
   erb:brands
 end
@@ -103,6 +104,13 @@ get('/brands/:id/edit') do
   erb:brand_editor
 end
 
+patch('/brands/:id/edit') do
+  @brand = Brand.find(params[:id].to_i)
+  @shoes = @brand.shoes
+  @stores = @brand.stores
+  erb:brand_editor
+end
+
 post('/brands/:id/add_shoe') do
   shoe_name = params.fetch("shoe_name")
   price = params["shoe_price"]
@@ -127,11 +135,12 @@ end
 
 get('/shoes') do
   @shoes = Shoe.all.order(:brand_id)
+  @brands = Brand.all
   erb:shoes
 end
 
 get('/shoes/order_price') do
-
+  @brands = Brand.all
   @shoes = Shoe.all.order(:price)
   erb:shoes
 end
@@ -155,6 +164,10 @@ patch('/shoes/:id') do
   erb:shoe
 end
 
+delete('/brands/:id/delete_shoes/:shoe_id') do
+
+  erb:store_edit
+end
 
 delete('/stores/:id/delete') do
   erb:index
