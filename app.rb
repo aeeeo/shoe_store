@@ -30,13 +30,11 @@ get('/order_name') do
   erb:index
 end
 
-post('/') do
+post('/stores') do
   store_name = params.fetch("store_name")
   Store.create({:name => store_name})
   @stores = Store.all
-  @brands = Brand.all
-  @shoes = Shoe.all
-  erb:index
+  erb:stores
 end
 
 get('/stores') do
