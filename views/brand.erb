@@ -5,22 +5,24 @@
 
 
 <h2>Shoes:</h2>
+<p>Sort by <a href="/brands/<%=@brand.id%>/order_price">Price</a> | <a href="/brands/<%=@brand.id%>">Name</a>
+
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
+      <th scope="col">Edit/Delete</th>
     </tr>
   </thead>
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
       <td><%= shoe.name %></td>
-
-      <td><%= shoe.brand.name %></td>
-
+      <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
       <td><%= shoe.price %></td>
+      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
     </tr>
     <% end %>
   </tbody>
