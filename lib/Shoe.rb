@@ -13,6 +13,10 @@ class Shoe < ActiveRecord::Base
     self.name=(name.chomp.downcase.titleize)
   end
   def format_price
+    if self.price = nil
+      self.price="$50.00"
+    else
     self.price="$" + sprintf('%.2f', price.to_f).to_s
+  end
   end
 end

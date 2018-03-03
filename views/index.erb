@@ -7,12 +7,30 @@
 <p>Add Store:</p>
 <form action="/" method="post">
   <input style="min-width: 70%" type="text" name="store_name" class="form-control" placeholder="Store" autocomplete="off">
-  <button type="submit" title="Add Store" class="btn btn-info btn-simple btn-xs">Add</button>
+  <button type="submit" title="Add Store" class="btn btn-lg">Add</button>
 </form>
 
 
 <h2>Shoe Locator</h2>
 <p>Sort by <a href="/brands">Brand</a> | <a href="/stores">Location</a>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Price</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @shoes.each do |shoe| %>
-<p><%= shoe.name %> <%= shoe.brand %> <%= shoe.price %> <%= shoe.store%></p>
-<%end%>
+    <tr>
+      <td><%= shoe.name %></td>
+
+      <td><%= shoe.brand.name %></td>
+
+      <td><%= shoe.price %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

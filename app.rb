@@ -84,14 +84,23 @@ end
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
-
+  @shoes = @brand.shoes
   erb:brand_editor
 end
 
-post('/brands') do
+post('/brands/:id/edit') do
   # if brands already exists
-  redirect to('/')
-  erb:brands
+  shoe_name = params.fetch("shoe_name")
+  price = params.fetch("price")
+  @brand = Brand.find(params[:id].to_i)
+  @shoes = @brand.shoes
+  if Shoe.where(name: shoe_name).first != nil
+    shoe = Shoe.where(name: shoe_name).first
+    @brand.shoes.push(shoe)
+  else
+    @brand.shoes.push(Shoe.create({:name => shoe_name, :price => price}))
+  end
+  erb:brand_editor
 end
 
 get('/brands/:id') do
