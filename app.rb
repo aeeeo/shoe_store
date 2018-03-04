@@ -256,7 +256,10 @@ patch('/stores/:id/remove_shoe/:shoe_id') do
   @shoe = Shoe.find(params[:shoe_id].to_i)
   @shoes = @store.shoes
   @store.shoes.destroy(@shoe)
-  @brands = Brand.all
+  brand = Brand.where(id: @shoe.brand_id)
+  @brands = @store.brands
+  @store.brands.destroy(brand)
+  @brands = @store.brands
   @stores = Store.all
   @all_shoes = Shoe.all
   erb:store_editor
