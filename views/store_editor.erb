@@ -35,10 +35,12 @@
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
+      <form action="/stores/<%= @store.id%>/remove_shoe/<%=shoe.id%>" method="post">
+
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
       <td><a href="/brands/<%= shoe.brand.id%>"><%= shoe.brand.name %></a></td>
       <td><%= shoe.pricify %></td>
-      <td><button type="submit" title="Add Shoe" class="btn btn-danger">Remove</button></td>
+      <td><button type="submit" title="Remove Shoe" class="btn btn-danger">Remove</button></td>
     </tr>
     <% end %>
   </tbody>
