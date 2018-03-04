@@ -8,7 +8,7 @@
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
-      <th scope="col">Edit/Delete</th>
+      <th scope="col">Locations</th>
     </tr>
   </thead>
   <tbody>
@@ -16,8 +16,8 @@
     <tr>
       <td><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></td>
       <td><a href="/brands/<%=shoe.brand_id%>"><%= shoe.brand.name %></a></td>
-      <td><%= shoe.price %></td>
-      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
+      <td><%= shoe.pricify %></td>
+      <td><%= shoe.stores.length%></td>
     </tr>
     <% end %>
   </tbody>

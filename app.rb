@@ -8,7 +8,6 @@ require('./lib/store')
 require('./lib/brand')
 require('./lib/shoe')
 
-
 get('/') do
   @brands = Brand.all
   @stores = Store.all.order(:name)
@@ -208,7 +207,7 @@ get('/brands/:id/order_price') do
 end
 
 get('/shoes') do
-  @shoes = Shoe.all.order(:brand_id)
+  @shoes = Shoe.all.order(:brand_name)
   @brands = Brand.all
   erb:shoes
 end

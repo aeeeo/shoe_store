@@ -15,10 +15,19 @@
           url: "<%=url('./img/shoe.png')%>",
           alt: "Vale"
       }, {
+          url: "<%=url('./img/shoe5.png')%>",
+          alt: "Petrobras"
+      }, {
           url: "<%=url('./img/shoe2.png')%>",
           alt: "Petrobras"
       }, {
-          url: "<%=url('./img/shoe3.png')%>",
+          url: "<%=url('./img/shoe6.png')%>",
+          alt: "Petrobras"
+      }, {
+          url: "<%=url('./img/shoe2.png')%>",
+          alt: "Petrobras"
+      }, {
+          url: "<%=url('./img/shoe7.png')%>",
           alt: "IGAM"
       }, {
           url: "<%=url('./img/shoe4.png')%>",
@@ -28,7 +37,7 @@
       images.sort(function () { return 0.5 - Math.random(); });
 
       $.each(images, function (index, image) {
-          var element = $('<div class="item"><img src="' + image.url + '" alt="' + image.alt + '" /></a></div>')
+          var element = $('<div class="item"><a href="/shoes"><img src="' + image.url + '" alt="' + image.alt + '" /></a></div>')
 
           if (index === 0) {
               element.addClass("active");
@@ -47,17 +56,19 @@
   </head>
   <body>
 
-    <div class='container'>
+<div class='container'>
       <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
         </div>
-      </div>
-      <br>
+
+
+
       <a href="/">Home</a> | <a href="/stores">Stores</a> | <a href="/brands">Shoes</a>
 
-    <div class="container2">
+    <div class="container1">
       <%= yield %>
 
     </div>
+  </div>
   </body>
 </html>
