@@ -11,6 +11,14 @@
   <br><button type="submit" class="btn-lg">Save</button>
 </form>
 
+<form action="/stores/<%= @store.id%>/delete" method="post">
+  <input name="_method" type="hidden" value="delete">
+
+  <br><button type="submit" class="btn-lg btn_danger">Delete</button>
+</form>
+
+
+
 
 <h2>Shoe Locator</h2>
 <p>Sort by <a href="/stores/<%=@store.id%>/edit">Name</a> | <a href="/stores/<%=@store.id%>/edit/order_price">Price</a> | <a href="/stores/<%=@store.id%>/edit/order_brand">Brand</a>

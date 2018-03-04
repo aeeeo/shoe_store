@@ -8,8 +8,10 @@ class Shoe < ActiveRecord::Base
 
 
   def pricify
-    self.price="$" + sprintf('%.2f', price.to_f).to_s
+    priced=self.price
+    "$" + sprintf('%.2f', priced.to_f).to_s
   end
+
 
   private
 
@@ -18,7 +20,7 @@ class Shoe < ActiveRecord::Base
   end
 
   def format_price
-      self.price=price.to_i
+      self.price=price
   end
 
 end

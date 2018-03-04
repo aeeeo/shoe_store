@@ -221,6 +221,42 @@ patch('/shoes/:id') do
   erb:shoe
 end
 
+delete('/stores/:id/delete') do
+  @store = Store.find(params[:id].to_i)
+  @store.delete
+  @stores = Store.all.order(:name)
+  @shoes = @store.shoes
+  @brands = @store.brands
+  erb:stores
+end
+
+delete('/shoes/:id/delete') do
+  @shoe = Shoe.find(params[:id].to_i)
+  @shoe.delete
+  @stores = Store.all.order(:name)
+  @shoes = @store.shoes
+  @brands = @store.brands
+  erb:index
+end
+
+delete('/recipes/:id/delete_tag/:tag_id') do
+  @recipe = Recipe.find(params[:id].to_i)
+  @tag = Tag.find(params[:tag_id].to_i)
+  @recipe.tags.destroy(@tag)
+  @ingredients = @recipe.ingredients
+  @tags = @recipe.tags
+  erb:recipe_edit
+end
+
+delete('/recipes/:id/delete_ingredient/:ingredient_id') do
+  @recipe = Recipe.find(params[:id].to_i)
+  @ingredient = Ingredient.find(params[:ingredient_id].to_i)
+  @recipe.ingredients.destroy(@ingredient)
+  @ingredients = @recipe.ingredients
+  @tags = @recipe.tags
+  erb:recipe_edit
+end
+
 delete('/brands/:id/delete_shoes/:shoe_id') do
 
   erb:store_edit

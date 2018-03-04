@@ -27,8 +27,8 @@
     <tr>
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
       <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
-      <td><%= shoe.price %></td>
-      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
+      <td><%= shoe.pricify %></td>
+      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/edit">Delete</a></td>
     </tr>
     <% end %>
   </tbody>
