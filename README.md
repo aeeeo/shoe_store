@@ -4,6 +4,8 @@ Remember: the documentation, not the code, defines what a module does. -- Ken Wi
 
 # Laced With Less Shoe Liquidators
 
+![screenshot](/public/img/screenshot.png)
+
 #### [Andrew Peterson](http://github.com/ndrwptrsn) wrote this Active Record app.
 
 ## Setup
@@ -19,7 +21,13 @@ $ bundle exec rake:db migrate
 $ ruby app.rb
 ```
 
+```
+psql shoe_store_development < mydb.sql
+```
+
 Open your browser and go to localhost:4567
+
+Enjoy
 
 
 ## License
