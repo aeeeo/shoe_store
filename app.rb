@@ -231,6 +231,14 @@ get('/shoes/:id') do
   erb:shoe
 end
 
+get('/shoes/:id/edit') do
+  @shoe = Shoe.find(params[:id].to_i)
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
+  erb:shoe_editor
+end
+
 patch('/shoes/:id') do
   @shoe = Shoe.find(params[:id].to_i)
   shoe_name = params.fetch("shoe_name")

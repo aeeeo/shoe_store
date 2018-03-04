@@ -1,0 +1,12 @@
+<h1>Shoe_Editor ERB</h1>
+<h1><%= @shoe.brand.name%> <%= @shoe.name %> <%= @shoe.pricify %></h1>
+<img src="<%=@shoe.brand.img_url%>" width="150">
+
+<h3>Name:</h3>
+<form action="/shoes/<%= @shoe.id%>" method="post">
+  <input name="_method" type="hidden" value="patch">
+  <input name="shoe_name" class="form-control" type="text" placeholder="Change Name" value="<%= @shoe.name %>">
+<h3>Price:</h3>
+    <input type="number" name="price" value="<%=@shoe.price %>" class="form-control" placeholder="New Price" >
+  <br><button type="submit" class="btn-lg">Save</button>
+</form>
