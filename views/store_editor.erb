@@ -7,7 +7,7 @@
   <input name="_method" type="hidden" value="patch">
   <input name="store_name" class="form-control" type="text" placeholder="Change Name" value="<%= @store.name %>">
 <h3>Location:</h3>
-    <input name="location" value="<%= @store.location %>" class="form-control" type="text" placeholder="Add Zip Code">
+<input type="number" value="<%=@store.location%>" name="location" max="100000" class="form-control" placeholder="Zip" autocomplete="off" ><br>
   <br><button type="submit" class="btn-lg">Save</button>
 </form>
 
