@@ -82,6 +82,7 @@ post('/brands') do
   @stores = Store.all
   @brands = Brand.all.order(:name)
   @shoes = Shoe.all
+  @all_shoes = Shoe.all
   erb:brands
 end
 
