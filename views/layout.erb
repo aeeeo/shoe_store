@@ -7,26 +7,49 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="<%= url('../js/scripts.js')%>"></script>
+  <script>
+  jQuery(document).ready(function ($) {
+      var images = [{
+          url: "<%=url('./img/shoe.png')%>",
+          alt: "Vale"
+      }, {
+          url: "<%=url('./img/shoe2.png')%>",
+          alt: "Petrobras"
+      }, {
+          url: "<%=url('./img/shoe3.png')%>",
+          alt: "IGAM"
+      }, {
+          url: "<%=url('./img/shoe4.png')%>",
+          alt: "Arcelor Mittal"
+      }];
+
+      images.sort(function () { return 0.5 - Math.random(); });
+
+      $.each(images, function (index, image) {
+          var element = $('<div class="item"><img src="' + image.url + '" alt="' + image.alt + '" /></a></div>')
+
+          if (index === 0) {
+              element.addClass("active");
+          }
+
+          element.appendTo("div.carousel-inner");
+      });
+
+  	$('.carousel').carousel({
+  	  interval: 1000,
+  	})
+  });
+</script>
 
     <title>Laced With Less Liquidation Wholesale Shoe Distribution</title>
   </head>
   <body>
 
     <div class='container'>
-      <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div id="carousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-          <div class="carousel-item active">
-            <img class="d-block " src="./img/shoe.png" alt="First slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block " src="./img/shoe2.png" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block " src="./img/shoe3.png" alt="Second slide">
-          </div>
-          <div class="carousel-item">
-            <img class="d-block " src="./img/shoe4.png" alt="Second slide">
-          </div>
         </div>
       </div>
       <br>
