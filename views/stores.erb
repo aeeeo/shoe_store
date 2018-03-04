@@ -1,13 +1,6 @@
 <h1>Stores ERB</h1>
 <h2>[THIS WILL BE A BEAUTIFUL MAP]</h2>
 
-<h2>Add Store:</h2>
-<form action="/stores" method="post">
-  <input type="text" name="store_name" class="form-control" placeholder="Store" autocomplete="off"><br>
-  <input type="number" name="location" max="100000" class="form-control" placeholder="Zip" autocomplete="off" ><br>
-  <button type="submit" title="Add Store" class="btn-lg">Add</button>
-</form>
-
 <h2>Stores:</h2>
 <p>Sort by <a href="/stores">Name</a> | <a href="/stores/order_location">Location</a>
 <table class="table">
@@ -15,14 +8,25 @@
     <tr>
       <th scope="col">Stores</th>
       <th scope="col">Location</th>
-      <th scope="col">Edit/Delete</th>
+      <th scope="col">Shoes Available</th>
     </tr>
   </thead>
   <tbody>
 <% @stores.each do |store| %>
 <tr>
-  <td><a href="stores/<%=store.id%>"><%= store.name %></a></td>
+  <td><a href="/stores/<%=store.id%>"><%= store.name %></a></td>
   <td><%= store.location %></td>
-  <td><a href="stores/<%=store.id%>/edit">edit</a> / <a href="stores/<%=store.id%>/edit">delete</a></td>
+  <td><%=store.shoes.length%></td>
 </tr>
 <% end %>
+</tbody>
+</table>
+
+
+
+<h2>Add Store:</h2>
+<form action="/stores" method="post">
+  <input type="text" name="store_name" class="form-control" placeholder="Store" autocomplete="off"><br>
+  <input type="number" name="location" max="100000" class="form-control" placeholder="Zip" autocomplete="off" ><br>
+  <button type="submit" title="Add Store" class="btn-lg">Add</button>
+</form>

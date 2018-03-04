@@ -1,12 +1,31 @@
 <h1>Index ERB</h1>
-<h2>Store Locator</h2>
+
+
+<h2>Stores:</h2>
+<p>Sort by <a href="/order_name_store">Name</a> | <a href="/order_location">Location</a>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Stores</th>
+      <th scope="col">Location</th>
+      <th scope="col">Shoes Available</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @stores.each do |store| %>
-<p><%= store.name %> <a href="stores/<%=store.id%>">view</a> | <a href="stores/<%=store.id%>/edit">edit</a></p>
-<%end%>
+<tr>
+  <td><a href="stores/<%=store.id%>"><%= store.name %></a></td>
+  <td><%= store.location %></td>
+  <td><%=store.shoes.length%></td>
+</tr>
+<% end %>
+</tbody>
+</table>
 
 
-<h2>Shoe Locator</h2>
-<p>Sort by <a href="/order_name">Name</a> | <a href="/order_price">Price</a> | <a href="/">Brand</a>
+
+<h2>Shoes:</h2>
+<p>Sort by <a href="/order_name">Name</a> | <a href="/order_price">Price</a> | <a href="/order_brand">Brand</a>
 
 <table class="table">
   <thead>

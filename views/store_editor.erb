@@ -8,19 +8,19 @@
   <input name="store_name" class="form-control" type="text" placeholder="Change Name" value="<%= @store.name %>">
 <h3>Location:</h3>
 <input type="number" value="<%=@store.location%>" name="location" max="100000" class="form-control" placeholder="Zip" autocomplete="off" ><br>
-  <br><button type="submit" class="btn-lg">Save</button>
+  <br><button type="submit" class="btn btn-primary">Save</button>
 </form>
 
 <form action="/stores/<%= @store.id%>/delete" method="post">
   <input name="_method" type="hidden" value="delete">
 
-  <br><button type="submit" class="btn-lg btn_danger">Delete</button>
+  <br><button type="submit" class="btn btn-danger">Delete</button>
 </form>
 
 
 
 
-<h2>Shoe Locator</h2>
+<h2>Shoes:</h2>
 <p>Sort by <a href="/stores/<%=@store.id%>/edit">Name</a> | <a href="/stores/<%=@store.id%>/edit/order_price">Price</a> | <a href="/stores/<%=@store.id%>/edit/order_brand">Brand</a>
 
 <table class="table">
@@ -29,7 +29,7 @@
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
-      <th scope="col">Edit/Delete</th>
+      <th scope="col"></th>
     </tr>
   </thead>
   <tbody>
@@ -37,8 +37,8 @@
     <tr>
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
       <td><a href="/stores/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
-      <td><%= shoe.price %></td>
-      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
+      <td><%= shoe.pricify %></td>
+      <td><button type="submit" title="Add Shoe" class="btn btn-danger">Remove</button></td>
     </tr>
     <% end %>
   </tbody>
@@ -53,12 +53,36 @@
 
 
 <h2>Add Shoes:</h2>
-<form action="/stores/<%=@store.id%>/add_shoe" method="post">
-  <select name="shoe_name">
-    <% @all_shoes.each do |shoe|%>
-    <option value="<%= shoe.name%>"><%= shoe.name%> | <%= shoe.brand.name%> </option>
-    <%end%>
-  </select>
-
-  <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
+<p>Sort by <a href="/stores/<%=@store.id%>/edit">Name</a> | <a href="/stores/<%=@store.id%>/edit/order_price">Price</a> | <a href="/stores/<%=@store.id%>/edit/order_brand">Brand</a>
+<br>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Shoes</th>
+      <th scope="col">Brand</th>
+      <th scope="col">Price</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+<% @all_shoes.each do |shoe| %>
+<% if shoe.added?(@store) == false %>
+    <tr><form action="/stores/<%=@store.id%>/add_shoe" method="post">
+      <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
+      <td><a href="/stores/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
+      <td><%= shoe.pricify %></td>
+      <td><input type="hidden" value="<%=shoe.name%>" name="shoe_name">
+        <button type="submit" title="Add Shoe" class="btn btn-warning">Add</button></td>
+    </tr>
+    <% else %>
+    <tr>
+      <td><%= shoe.name %></td>
+      <td><%= shoe.brand.name %></td>
+      <td><%= shoe.pricify %></td>
+      <td>-</td>
+    </tr>
 </form>
+<%end%>
+<% end %>
+</tbody>
+</table>

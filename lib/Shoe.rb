@@ -12,6 +12,15 @@ class Shoe < ActiveRecord::Base
     "$" + sprintf('%.2f', priced.to_f).to_s
   end
 
+  def added?(store)
+    if self.stores.any? {|check| check == store}
+      true
+    else
+      false
+    end
+  end
+
+
 
   private
 

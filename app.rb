@@ -18,15 +18,36 @@ end
 
 get('/order_price') do
   @brands = Brand.all
-  @stores = Store.all.order(:name)
+  @stores = Store.all
   @shoes = Shoe.all.order(:price)
+  erb:index
+end
+
+get('/order_brand') do
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all.order(:brand_name)
+  erb:index
+end
+
+get('/order_location') do
+  @brands = Brand.all
+  @stores = Store.all.order(:location)
+  @shoes = Shoe.all
   erb:index
 end
 
 get('/order_name') do
   @brands = Brand.all
-  @stores = Store.all.order(:name)
+  @stores = Store.all
   @shoes = Shoe.all.order(:name)
+  erb:index
+end
+
+get('/order_name_store') do
+  @brands = Brand.all
+  @stores = Store.all.order(:name)
+  @shoes = Shoe.all
   erb:index
 end
 
@@ -69,7 +90,7 @@ patch('/stores/:id/edit') do
   location = params.fetch("location")
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @shoes = @store.shoes
+  @shoes = @store.shoes.order(:name)
   @store.update({:name => store_name, :location => location})
   erb:store_editor
 end
