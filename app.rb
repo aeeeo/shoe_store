@@ -203,7 +203,7 @@ get('/brands/:id/order_price') do
   @brand = Brand.find(params[:id].to_i)
   @stores = @brand.stores.order(:name)
   @shoes = @brand.shoes.order(:price)
-  erb:brand_editor
+  erb:brand
 end
 
 get('/shoes') do
