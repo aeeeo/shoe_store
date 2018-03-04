@@ -1,17 +1,17 @@
 <h1>Shoe ERB</h1>
 <h1><%= @shoe.brand.name%> <%= @shoe.name %> <%= @shoe.pricify %></h1>
-<a href="/shoes/<%=@shoe.id%>/edit">modify</a>
-<a href="/brands/<%= @shoe.brand.id%>"><img src="<%=@shoe.brand.img_url%>" width="150"></a>
 
+<a href="/brands/<%= @shoe.brand.id%>"><img src="<%=@shoe.brand.img_url%>" width="150"></a>
+<br><a href="/shoes/<%=@shoe.id%>/edit">modify</a>
 <!-- <input type="button" class="btn-lg" value="Back" onclick="history.back(-4)" /> -->
-<h2><%=@shoe.brand_name%> Sold At These Stores:</h2>
+<h2><%=@shoe.brand_name%> <%= @shoe.name %> Sold At These Stores:</h2>
 
 <table class="table">
   <thead>
     <tr>
       <th scope="col">Name</th>
       <th scope="col">Location</th>
-      <th scope="col">Shoes Available</th>
+
     </tr>
   </thead>
   <tbody>
@@ -19,7 +19,7 @@
 <tr>
   <td><a href="stores/<%=store.id%>"><%= store.name %></a></td>
   <td><%= store.location %></td>
-  <td><%=store.shoes.length%></td>
+
 </tr>
 <% end %>
 </tbody>

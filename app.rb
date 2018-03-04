@@ -232,6 +232,15 @@ get('/shoes/:id') do
   erb:shoe
 end
 
+delete('/shoes/:id/shoe_delete') do
+  @shoe = Shoe.find(params[:id].to_i)
+  @shoe.destroy
+  @brands = Brand.all
+  @stores = Store.all
+  @shoes = Shoe.all
+  erb:shoes
+end
+
 get('/shoes/:id/edit') do
   @shoe = Shoe.find(params[:id].to_i)
   @brands = Brand.all

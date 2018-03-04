@@ -8,5 +8,9 @@
   <input name="shoe_name" class="form-control" type="text" placeholder="Change Name" value="<%= @shoe.name %>">
 <h3>Price:</h3>
     <input type="number" name="price" value="<%=@shoe.price %>" class="form-control" placeholder="New Price" >
-  <br><button type="submit" class="btn-lg">Save</button>
+  <br><button type="submit" class="btn-primary">Save</button>
+</form>
+<form action="/shoes/<%= @shoe.id%>/shoe_delete" method="post">
+  <input name="_method" type="hidden" value="delete">
+  <br><button type="submit" class="btn-danger">Delete</button>
 </form>
