@@ -2,10 +2,14 @@
 class Shoe < ActiveRecord::Base
   before_validation(:format_name)
   validates(:name, {uniqueness: true, :presence => true, :length => {:maximum => 100}})
-  before_save(:format_name)
-  after_save(:format_price)
+  before_save(:format_price)
   has_and_belongs_to_many :stores
   belongs_to :brand
+
+
+  def price_order
+    self.price.tr('$', '').to_f.to_int
+  end
 
   private
 
@@ -14,10 +18,7 @@ class Shoe < ActiveRecord::Base
   end
 
   def format_price
-    if self.price == nil
-      self.price="$50.00"
-    else
-      self.price="$" + sprintf('%.2f', price.tr('$', '').to_f).to_s
+      self.price=price.to_i
     end
-  end
+
 end

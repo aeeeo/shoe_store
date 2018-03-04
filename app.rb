@@ -12,7 +12,7 @@ require('./lib/shoe')
 get('/') do
   @brands = Brand.all
   @stores = Store.all.order(:name)
-  @shoes = Shoe.all.order(:brand_id)
+  @shoes = Shoe.all.order(:brand_name)
   erb:index
 end
 
@@ -84,19 +84,19 @@ get('/stores/:id/edit/order_price') do
   erb:store_editor
 end
 
+get('/stores/:id') do
+  @store = Store.find(params[:id].to_i)
+  @brands = @store.brands
+  @shoes = @store.shoes.order(:brand_name)
+  erb:store
+end
+
 get('/stores/:id/edit/order_brand') do
   @all_shoes = Shoe.all
   @store = Store.find(params[:id].to_i)
   @brands = @store.brands
-  @shoes = @store.shoes.order(:brand_id)
+  @shoes = @store.shoes.order(:brand_name)
   erb:store_editor
-end
-
-get('/stores/:id') do
-  @store = Store.find(params[:id].to_i)
-  @brands = @store.brands
-  @shoes = @store.shoes.order(:brand_id)
-  erb:store
 end
 
 get('/stores/:id/order_price') do
@@ -134,7 +134,7 @@ end
 
 get('/brands/:id/edit') do
   @brand = Brand.find(params[:id].to_i)
-  @shoes = @brand.shoes.order(:brand_id)
+  @shoes = @brand.shoes.order(:name)
   @stores = @brand.stores
   erb:brand_editor
 end
@@ -156,7 +156,7 @@ post('/brands/:id/add_shoe') do
   @brand = Brand.find(params[:id].to_i)
   @shoes = @brand.shoes
   if shoe == nil
-    @shoes.push(Shoe.create({:name => shoe_name, :price => price}))
+    @shoes.push(Shoe.create({:name => shoe_name, :price => price, :brand_name => @brand.name}))
   end
   @brand = Brand.find(params[:id].to_i)
   @stores = @brand.stores
