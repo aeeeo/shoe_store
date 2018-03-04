@@ -87,6 +87,31 @@ post('/brands') do
   erb:brands
 end
 
+get('/brands/order_price') do
+  @stores = Store.all
+  @brands = Brand.all.order(:name)
+  @shoes = Shoe.all.order(:price)
+  @all_shoes = Shoe.all.order(:price)
+  erb:brands
+end
+
+get('/brands/order_brand') do
+  @stores = Store.all
+  @brands = Brand.all.order(:name)
+  @shoes = Shoe.all.order(:brand_name)
+  @all_shoes = Shoe.all.order(:brand_name)
+  erb:brands
+end
+
+
+get('/brands/order_name') do
+  @stores = Store.all
+  @brands = Brand.all.order(:name)
+  @shoes = Shoe.all.order(:name)
+  @all_shoes = Shoe.all.order(:name)
+  erb:brands
+end
+
 patch('/stores/:id/edit') do
   @all_shoes = Shoe.all
   store_name = params.fetch("store_name")

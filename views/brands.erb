@@ -1,7 +1,9 @@
-<h1>Brands ERB</h1>
-
-<h2>Shoe Locator</h2>
-<p>Sort by <a href="/brands/order_name">Name</a> | <a href="/brands/order_price">Price</a> | <a href="/brands">Brand</a>
+<!-- <h1>Brands ERB</h1> -->
+<h1>Shoes</h1>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Shoes:</h2>
+<p>Sort by <a href="/brands/order_name">Name</a> | <a href="/brands/order_price">Price</a> | <a href="/brands/order_brand">Brand</a>
 
   <table class="table">
     <thead>
@@ -23,12 +25,29 @@
       <% end %>
     </tbody>
   </table>
+</div>
 
-<h2>Click A Brand Below to Add A Shoe:</h2>
+<div class="col-md-6">
+  <h2>Brands:</h2>
+<p>Click a brand to add shoes</p>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Brands</th>
+
+    </tr>
+  </thead>
+  <tbody>
 <% @brands.each do |brand| %>
-<p><a href="brands/<%=brand.id%>"><%= brand.name %></a></p>
-
-<%end%>
+    <tr>
+      <td><a href="brands/<%=brand.id%>"><%= brand.name %></a></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+</div>
 <% @brands.each do |brand| %>
 <a href="brands/<%=brand.id%>"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"></a>
 <%end%>

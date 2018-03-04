@@ -1,53 +1,53 @@
-<h1>Index ERB</h1>
-
-
-<h2>Stores:</h2>
-<p>Sort by <a href="/order_name_store">Name</a> | <a href="/order_location">Location</a>
-<table class="table">
-  <thead>
+<!-- <h1>Index ERB</h1> -->
+<h1>Home</h1>
+<div class="row">
+  <div class="col-md-6">
+    <h2>Stores:</h2>
+    <p>Sort by <a href="/order_name_store">Name</a> | <a href="/order_location">Location</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Location</th>
+          <th scope="col">Shoes Available</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @stores.each do |store| %>
     <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Location</th>
-      <th scope="col">Shoes Available</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @stores.each do |store| %>
-<tr>
-  <td><a href="stores/<%=store.id%>"><%= store.name %></a></td>
-  <td><%= store.location %></td>
-  <td><%=store.shoes.length%></td>
-</tr>
-<% end %>
-</tbody>
-</table>
-
-
-
-<h2>Shoes:</h2>
-<p>Sort by <a href="/order_name">Name</a> | <a href="/order_brand">Brand</a> | <a href="/order_price">Price</a>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Name</th>
-      <th scope="col">Brand</th>
-      <th scope="col">Price</th>
-      <th scope="col">Locations</th>
-    </tr>
-  </thead>
-  <tbody>
-<% @shoes.each do |shoe| %>
-    <tr>
-      <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
-      <td><a href="/brands/<%= shoe.brand.id%>"><%= shoe.brand.name %></a></td>
-      <td><%= shoe.pricify %></td>
-      <td><%= shoe.stores.length %></td>
+      <td><a href="stores/<%=store.id%>"><%= store.name %></a></td>
+      <td><%= store.location %></td>
+      <td><%=store.shoes.length%></td>
     </tr>
     <% end %>
-  </tbody>
-</table>
-
+    </tbody>
+    </table>
+  </div>
+  <div class="col-md-6">
+    <h2>Shoes:</h2>
+    <p>Sort by <a href="/order_name">Name</a> | <a href="/order_brand">Brand</a> | <a href="/order_price">Price</a>
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">Name</th>
+          <th scope="col">Brand</th>
+          <th scope="col">Price</th>
+          <th scope="col">Locations</th>
+        </tr>
+      </thead>
+      <tbody>
+    <% @shoes.each do |shoe| %>
+        <tr>
+          <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
+          <td><a href="/brands/<%= shoe.brand.id%>"><%= shoe.brand.name %></a></td>
+          <td><%= shoe.pricify %></td>
+          <td><%= shoe.stores.length %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
 <%@brands.each do |brand|%>
-<a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>" width="150"></a>
+  <a href="/brands/<%=brand.id%>"><img src="<%= brand.img_url%>" width="150"></a>
 <%end%>

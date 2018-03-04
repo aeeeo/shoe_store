@@ -1,4 +1,5 @@
-<h1>Brand Editor ERB</h1>
+<!-- <h1>Brand Editor ERB</h1> -->
+
 <h1><%= @brand.name%></h1>
 <a href="/brands/<%=@brand.id%>"><img src="<%= @brand.img_url%>" width="150"></a>
 <h3>Name:</h3>
@@ -33,16 +34,12 @@
   </tbody>
 </table>
 
-
-
-
 <p>Add Shoe:</p>
 <form action="/brands/<%=@brand.id%>/add_shoe" method="post">
   <input type="text" name="shoe_name" class="form-control" placeholder="Shoe Name" autocomplete="off"><br>
   <input type="text" name="shoe_price" class="form-control" placeholder="Shoe Price" autocomplete="off"><br>
   <button type="submit" title="Add Shoe" class="btn-lg">Add</button>
 </form>
-
 
 <h2><%=@brand.name%> Sold at These Stores:</h2>
 
@@ -54,12 +51,11 @@
     </tr>
   </thead>
   <tbody>
-<% @stores.each do |store| %>
-<tr>
-  <td><a href="/stores/<%=store.id%>"><%= store.name %></a></td>
-  <td><%= store.location %></td>
-
-</tr>
-<% end %>
-</tbody>
+    <% @stores.each do |store| %>
+    <tr>
+      <td><a href="/stores/<%=store.id%>"><%= store.name %></a></td>
+      <td><%= store.location %></td>
+    </tr>
+  <% end %>
+  </tbody>
 </table>
