@@ -36,7 +36,7 @@
 <% @shoes.each do |shoe| %>
     <tr>
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
-      <td><a href="/stores/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
+      <td><a href="/brands/<%= shoe.brand.id%>"><%= shoe.brand.name %></a></td>
       <td><%= shoe.pricify %></td>
       <td><button type="submit" title="Add Shoe" class="btn btn-danger">Remove</button></td>
     </tr>
@@ -69,7 +69,7 @@
 <% if shoe.added?(@store) == false %>
     <tr><form action="/stores/<%=@store.id%>/add_shoe" method="post">
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
-      <td><a href="/stores/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
+      <td><a href="/brands/<%= shoe.brand.id%>"><%= shoe.brand.name %></a></td>
       <td><%= shoe.pricify %></td>
       <td><input type="hidden" value="<%=shoe.name%>" name="shoe_name">
         <button type="submit" title="Add Shoe" class="btn btn-warning">Add</button></td>

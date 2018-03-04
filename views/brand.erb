@@ -1,7 +1,8 @@
 <h1>Brand ERB</h1>
 <h1><%= @brand.name%></h1>
-
 <a href="/brands/<%=@brand.id%>/edit">Edit</a>
+<a href="/brands/<%=@brand.id%>"><img src="<%=@brand.img_url%>" width="150"></a>
+
 
 
 <h2>Shoes:</h2>
@@ -13,7 +14,7 @@
       <th scope="col">Shoes</th>
       <th scope="col">Brand</th>
       <th scope="col">Price</th>
-      <th scope="col">Edit/Delete</th>
+      <th scope="col">Locations</th>
     </tr>
   </thead>
   <tbody>
@@ -21,14 +22,30 @@
     <tr>
       <td><%= shoe.name %></td>
       <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
-      <td><%= shoe.price %></td>
-      <td><a href="/shoes/<%= shoe.id %>">Edit</a> / <a href="/shoes/<%= shoe.id %>/delete">Delete</a></td>
+      <td><%= shoe.pricify %></td>
+      <td><%= shoe.stores.length %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<h2>Available at:</h2>
+
+<h2><%=@brand.name%> Sold at These Stores:</h2>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Stores</th>
+      <th scope="col">Location</th>
+    </tr>
+  </thead>
+  <tbody>
 <% @stores.each do |store| %>
-  <p><a href="/stores/<%=store.id%>"><%= store.name %></a></p>
+<tr>
+  <td><a href="/stores/<%=store.id%>"><%= store.name %></a></td>
+  <td><%= store.location %></td>
+
+</tr>
 <% end %>
+</tbody>
+</table>

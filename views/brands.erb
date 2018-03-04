@@ -2,11 +2,11 @@
 
 <h2>Brands:</h2>
 <% @brands.each do |brand| %>
-<p><a href="brands/<%=brand.id%>/edit"><%= brand.name %></a></p>
+<p><a href="brands/<%=brand.id%>"><%= brand.name %></a></p>
 
 <%end%>
 <% @brands.each do |brand| %>
-<a href="brands/<%=brand.id%>/edit"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"></a>
+<a href="brands/<%=brand.id%>"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"></a>
 <%end%>
 <h2>Add Brand:</h2>
 <form action="/brands" method="post">
