@@ -32,7 +32,8 @@ end
 
 post('/stores') do
   store_name = params.fetch("store_name")
-  Store.create({:name => store_name})
+  location = params.fetch("location")
+  Store.create({:name => store_name, :location => location})
   @stores = Store.all
   erb:stores
 end
