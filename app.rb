@@ -7,6 +7,10 @@ require('pg')
 require('./lib/store')
 require('./lib/brand')
 require('./lib/shoe')
+require ('active_record')
+
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'] || 'postgres://localhost/mydb')
+
 
 get('/') do
   @brands = Brand.all
