@@ -251,7 +251,7 @@ patch('/shoes/:id') do
   erb:shoe
 end
 
-post('/stores/:id/remove_shoe/:shoe_id') do
+patch('/stores/:id/remove_shoe/:shoe_id') do
   @store = Store.find(params[:id].to_i)
   @shoe = Shoe.find(params[:shoe_id].to_i)
   @shoes = @store.shoes
