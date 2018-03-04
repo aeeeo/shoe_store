@@ -18,12 +18,14 @@ $ bundle exec rake:db migrate
 ```
 
 ```
-$ ruby app.rb
+psql shoe_store_development < mydb.sql
 ```
 
 ```
-psql shoe_store_development < mydb.sql
+$ ruby app.rb
 ```
+
+
 
 Open your browser and go to localhost:4567
 
