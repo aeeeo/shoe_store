@@ -38,7 +38,12 @@ post('/stores') do
 end
 
 get('/stores') do
-  @stores = Store.all
+  @stores = Store.all.order(:name)
+  erb:stores
+end
+
+get('/stores/order_location') do
+  @stores = Store.all.order(:location)
   erb:stores
 end
 

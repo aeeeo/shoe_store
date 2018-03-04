@@ -7,8 +7,8 @@ class Shoe < ActiveRecord::Base
   belongs_to :brand
 
 
-  def price_order
-    self.price.tr('$', '').to_f.to_int
+  def pricify
+    self.price="$" + sprintf('%.2f', price.to_f).to_s
   end
 
   private
@@ -19,6 +19,6 @@ class Shoe < ActiveRecord::Base
 
   def format_price
       self.price=price.to_i
-    end
+  end
 
 end

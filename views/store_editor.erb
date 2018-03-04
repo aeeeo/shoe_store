@@ -44,12 +44,6 @@
 
 
 
-<!-- <h2>Available Brands:</h2>
-<% @brands.each do |brand| %>
-  <p><%= brand.name %> <a href="/brands/<%=brand.id%>">view</a> | <a href="/brands/<%= brand.id%>/edit">edit</a></p>
-<% end %> -->
-
-
 <h2>Add Shoes:</h2>
 <form action="/stores/<%=@store.id%>/add_shoe" method="post">
   <select name="shoe_name">
