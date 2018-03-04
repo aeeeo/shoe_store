@@ -1,6 +1,6 @@
 <h1>Brand ERB</h1>
 <h1><%= @brand.name%></h1>
-<a href="/brands/<%=@brand.id%>/edit">Edit</a>
+<a href="/brands/<%=@brand.id%>/edit">modify</a>
 <a href="/brands/<%=@brand.id%>"><img src="<%=@brand.img_url%>" width="150"></a>
 
 
@@ -20,8 +20,8 @@
   <tbody>
 <% @shoes.each do |shoe| %>
     <tr>
-      <td><%= shoe.name %></td>
-      <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
+      <td><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></td>
+      <td><%= shoe.brand.name %></td>
       <td><%= shoe.pricify %></td>
       <td><%= shoe.stores.length %></td>
     </tr>

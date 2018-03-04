@@ -1,5 +1,29 @@
 <h1>Brands ERB</h1>
 
+<h2>Shoe Locator</h2>
+<p>Sort by <a href="/brands/order_name">Name</a> | <a href="/brands/order_price">Price</a> | <a href="/brands">Brand</a>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Shoes</th>
+        <th scope="col">Brand</th>
+        <th scope="col">Price</th>
+        <th scope="col">Locations</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @all_shoes.each do |shoe| %>
+      <tr>
+        <td><a href="/shoes/<%=shoe.id%>"><%= shoe.name %></a></td>
+        <td><a href="/brands/<%=shoe.brand_id%>"><%= shoe.brand.name %></a></td>
+        <td><%= shoe.pricify %></td>
+        <td><%= shoe.stores.length%></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <h2>Brands:</h2>
 <% @brands.each do |brand| %>
 <p><a href="brands/<%=brand.id%>"><%= brand.name %></a></p>
@@ -8,7 +32,7 @@
 <% @brands.each do |brand| %>
 <a href="brands/<%=brand.id%>"><img src="<%= brand.img_url %>" width="150" alt="<%= brand.name %>" onerror="this.style.display='none'"></a>
 <%end%>
-<h2>Add Brand:</h2>
+<h2>New Brand:</h2>
 <form action="/brands" method="post">
   <input style="min-width: 70%" type="text" name="brand_name" class="form-control" placeholder="Brand" autocomplete="off"><br>
   <input style="min-width: 70%" type="text" name="img_url" class="form-control" placeholder="Image URL" autocomplete="off"><br>

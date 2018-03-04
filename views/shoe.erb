@@ -1,7 +1,8 @@
 <h1>Shoe ERB</h1>
 <h1><%= @shoe.brand.name%> <%= @shoe.name %> <%= @shoe.pricify %></h1>
-<img src="<%=@shoe.brand.img_url%>" width="150">
-<a href="/shoes/<%= @shoe.id %>/edit">modify</a>
+<a href="/shoes/<%=@shoe.id%>/edit">modify</a>
+<a href="/brands/<%= @shoe.brand.id%>"><img src="<%=@shoe.brand.img_url%>" width="150"></a>
+
 <!-- <input type="button" class="btn-lg" value="Back" onclick="history.back(-4)" /> -->
 
 <h2>Available at these stores:</h2>

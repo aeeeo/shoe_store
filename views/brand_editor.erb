@@ -11,7 +11,6 @@
 </form>
 
 <h2>Shoes:</h2>
-<p>Sort by <a href="/brands/<%=@brand.id%>/edit">Name</a> | <a href="/brands/<%=@brand.id%>/order_price">Price</a>
 
 <table class="table">
   <thead>
@@ -26,7 +25,7 @@
 <% @shoes.each do |shoe| %>
     <tr>
       <td><a href="/shoes/<%= shoe.id%>"><%= shoe.name %></a></td>
-      <td><a href="/brands/<%= shoe.brand.id%>/edit"><%= shoe.brand.name %></a></td>
+      <td><%= shoe.brand.name %></td>
       <td><%= shoe.pricify %></td>
       <td><%= shoe.stores.length %></td>
     </tr>

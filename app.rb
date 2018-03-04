@@ -71,6 +71,7 @@ end
 
 get('/brands') do
   @brands = Brand.all.order(:name)
+  @all_shoes = Shoe.all
   erb:brands
 end
 

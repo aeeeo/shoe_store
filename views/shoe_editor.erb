@@ -1,6 +1,6 @@
 <h1>Shoe_Editor ERB</h1>
 <h1><%= @shoe.brand.name%> <%= @shoe.name %> <%= @shoe.pricify %></h1>
-<img src="<%=@shoe.brand.img_url%>" width="150">
+<a href="/brands/<%= @shoe.brand.id%>"><img src="<%=@shoe.brand.img_url%>" width="150"></a>
 
 <h3>Name:</h3>
 <form action="/shoes/<%= @shoe.id%>" method="post">
