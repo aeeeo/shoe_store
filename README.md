@@ -2,7 +2,7 @@
 
 Remember: the documentation, not the code, defines what a module does. -- Ken Williams-->
 
-# Laced With Less Shoe Liquidators
+# Laced 4 Less Shoe Liquidators
 
 ![screenshot](/public/img/screenshot.png)
 
