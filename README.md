@@ -6,8 +6,6 @@ Remember: the documentation, not the code, defines what a module does. -- Ken Wi
 
 ![screenshot](/public/img/screenshot.png)
 
-#### [Andrew Peterson](http://github.com/ndrwptrsn) wrote this Active Record app.
-
 ## Setup
 
 Clone to your Desktop.
@@ -26,7 +24,6 @@ $ ruby app.rb
 ```
 
 
-
 Open your browser and go to localhost:4567
 
 Enjoy
@@ -35,5 +32,3 @@ Enjoy
 ## License
 
 *Licensed under MIT license*
-
-Copyright (c) 2018 **_Andrew Peterson_**
